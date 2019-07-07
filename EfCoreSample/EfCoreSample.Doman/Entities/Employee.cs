@@ -22,5 +22,7 @@ namespace EfCoreSample.Doman
         public ICollection<Employee> ReportsToEmployees { get; set; }
 
         public ICollection<EmployeeDepartment> EmployeeDepartments { get; set; }
+
+        public ICollection<EmployeeProject> EmployeeProjects { get; set; }
     }
 }

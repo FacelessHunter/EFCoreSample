@@ -11,5 +11,6 @@ namespace EfCoreSample.Doman
         public string Location { get; set; }
 
         public ICollection<EmployeeDepartment> EmployeeDepartments { get; set; }
+
     }
 }
