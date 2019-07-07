@@ -15,7 +15,7 @@ namespace EfCoreSample.Persistance
                 .Build();
 
             var optionsBuilder = new DbContextOptionsBuilder<EfCoreSampleDbContext>();
-            optionsBuilder.UseMySql(configuration.GetConnectionString("LocalConnection"));
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("LocalConnection"));
 
             return new EfCoreSampleDbContext(optionsBuilder.Options);
         }
