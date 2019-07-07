@@ -1,6 +1,8 @@
-﻿namespace EfCoreSample.Doman
+﻿using EfCoreSample.Doman.Abstraction;
+
+namespace EfCoreSample.Doman
 {
-    public class Address
+    public class Address : IEntity<long>
     {
         public long Id { get; set; }
 

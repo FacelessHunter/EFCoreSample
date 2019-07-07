@@ -1,9 +1,10 @@
-﻿using System;
+﻿using EfCoreSample.Doman.Abstraction;
+using System;
 using System.Collections.Generic;
 
 namespace EfCoreSample.Doman
 {
-    public class Employee
+    public class Employee : IEntity<long>
     {
         public long Id { get; set; }
 
@@ -22,5 +23,7 @@ namespace EfCoreSample.Doman
         public ICollection<Employee> ReportsToEmployees { get; set; }
 
         public ICollection<EmployeeDepartment> EmployeeDepartments { get; set; }
+
+        public ICollection<EmployeeProject> EmployeeProjects { get; set; }
     }
 }
