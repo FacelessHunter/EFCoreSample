@@ -15,7 +15,7 @@ namespace EfCoreSample.Persistance.EntityConfiguration
             departmentBuilder.Property(e => e.Name).HasMaxLength(126).IsRequired();
             departmentBuilder.Property(e => e.Location).HasMaxLength(126);
 
-            departmentBuilder.HasData(
+            /*departmentBuilder.HasData(
                 new Department()
                 {
                     Id = 1,
@@ -27,7 +27,7 @@ namespace EfCoreSample.Persistance.EntityConfiguration
                     Id = 1,
                     Name = "West",
                     Location = "Ternopil"
-                });
+                });*/
 
         }
     }

@@ -17,10 +17,10 @@ namespace EfCoreSample.Persistance.EntityConfiguration
             projectBuilder.Property(e => e.Status).IsRequired();
 
             projectBuilder.Property(e => e.StartTime)
-                .HasDefaultValueSql("GetUtcDate()");
+                .HasDefaultValueSql("current_timestamp(6)");
 
             projectBuilder.Property(t => t.LastUpdatedTime)
-                .HasDefaultValueSql(" UPDATE project SET LastUpdatedTime = GetUtcDate()")
+                .HasDefaultValueSql("current_timestamp(6) ON UPDATE current_timestamp(6)")
                 .ValueGeneratedOnAddOrUpdate();
             projectBuilder.HasData(
                 new Project()

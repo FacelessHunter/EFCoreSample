@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EfCoreSample.Doman", "EfCor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EfCoreSample.Persistance", "EfCoreSample.Persistance\EfCoreSample.Persistance.csproj", "{618B46BC-BC3C-4B11-9076-2E719A1A3789}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfCoreSample.Infrastructure", "EfCoreSample.Infrastructure\EfCoreSample.Infrastructure.csproj", "{0CE64D36-5EFB-494F-9BE1-FE65F6940726}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EfCoreSample.Infrastructure", "EfCoreSample.Infrastructure\EfCoreSample.Infrastructure.csproj", "{0CE64D36-5EFB-494F-9BE1-FE65F6940726}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -5,6 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using EfCoreSample.Services;
+using EfCoreSample.Infrastructure.Abstraction;
+using EfCoreSample.Infrastructure;
+using EfCoreSample.Doman;
 
 namespace EfCoreSample
 {
@@ -21,8 +25,10 @@ namespace EfCoreSample
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddTransient<IService, ProjectService>();
+            services.AddTransient<ProjectRepository>();
 
-            services.AddDbContext<EfCoreSampleDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LocalConnection")));
+            services.AddDbContext<EfCoreSampleDbContext>(options => options.UseMySql(Configuration.GetConnectionString("LocalConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

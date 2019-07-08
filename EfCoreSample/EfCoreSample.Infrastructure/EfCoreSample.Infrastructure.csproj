@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EfCoreSample.Doman\EfCoreSample.Doman.csproj" />
+    <ProjectReference Include="..\EfCoreSample.Persistance\EfCoreSample.Persistance.csproj" />
   </ItemGroup>
 
 </Project>

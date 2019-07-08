@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 
+
 namespace EfCoreSample.Persistance
 {
     class EfCoreDbContextFactory : IDesignTimeDbContextFactory<EfCoreSampleDbContext>
@@ -15,7 +16,7 @@ namespace EfCoreSample.Persistance
                 .Build();
 
             var optionsBuilder = new DbContextOptionsBuilder<EfCoreSampleDbContext>();
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("LocalConnection"));
+            optionsBuilder.UseMySql(configuration.GetConnectionString("LocalConnection"));
 
             return new EfCoreSampleDbContext(optionsBuilder.Options);
         }
