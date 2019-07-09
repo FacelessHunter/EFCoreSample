@@ -78,10 +78,6 @@ namespace EfCoreSample.Services
             return await projectRepository.FindAsync(key);
         }
 
-        /*public async Task<IEnumerable<Project>> GetMembersAsync(long key)
-        {
-            return await projectRepository.GetMembersAsync(key);
-        }*/
         public async Task<Project> Create(Project item)
         {
             return await projectRepository.InsertAsync(item);
@@ -89,20 +85,20 @@ namespace EfCoreSample.Services
 
         public Project Update(Project item)
         {
-            return projectRepository.Update(item);
-
+            if (projectRepository.IsExist(item.Id))
+                return projectRepository.Update(item);
+            else return null;
         }
 
-        public void UpdateRange(IEnumerable<Project> item)
-        {
-            projectRepository.UpdateRange(item);
-
-        }
 
         public bool Remove(Project item)
         {
-            if (item.Status != Status.InProgress)
-                return projectRepository.Remove(item);
+            if (!projectRepository.IsExist(item.Id))
+            { 
+                if (item.Status != Status.InProgress)
+                    return projectRepository.Remove(item);
+                return false;
+            }
             else return false;
         }
 

@@ -77,21 +77,26 @@ namespace EfCoreSample.Infrastructure
             return await db.Projects.FindAsync(item.Id);
         }
 
+        public bool IsExist(long key)
+        {
+            return  db.Projects.Any(p => p.Id == key);
+        }
+
         public async Task<bool> IsExistAsync(long key)
         {
             return await db.Projects.AnyAsync(p => p.Id == key);
         }
-        public async void UpdateRange(IEnumerable<Project> items)
-        {
-            db.Projects.UpdateRange(items);
-            await db.SaveChangesAsync();
-        }
+        
+
         public Project Update(Project item)
         {
-            db.Projects.Update(item);
+            db.Entry(item).State = EntityState.Modified;
             db.SaveChanges();
+
             return db.Projects.Find(item.Id);
         }
+
+        
         public bool Remove(Project item)
         {
             try

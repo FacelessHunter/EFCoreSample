@@ -13,7 +13,7 @@ namespace EfCoreSample.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProjectsController : ControllerBase
+    public class ProjectsController : Controller
     {
         private IProjectService Service { get; set; }
 
@@ -21,7 +21,7 @@ namespace EfCoreSample.Controllers
         {
             Service = service;
         }
-
+        
         [HttpGet]
         public async Task<IEnumerable<Project>> Get(
                                                     Status? status, 
@@ -35,32 +35,25 @@ namespace EfCoreSample.Controllers
             return await Service.Get(status, title, startTime, endTime, page, pageSize, sortOrder);
         }
 
-
-        [Route("{key}")]
+        
+        [HttpGet("{key}")]
         public async Task<Project> Get(long key)
         {
             return await Service.Get(key);
         }
-
+        
         [HttpPost]
         public async Task<Project> Create([FromBody]Project project)
         {
             return await Service.Create(project);
         }
 
-        [HttpPut()]
-        public Project Update([FromBody]Project project)
+        [HttpPut]
+        public Project Update(Project project)
         {
             return  Service.Update(project);
         }
-
-        [HttpPut]
-        public void Update([FromBody]IEnumerable<Project> projects)
-        {
-             Service.UpdateRange(projects);
-        }
-
-        [HttpDelete()]
+        [HttpDelete]
         public bool Delete([FromBody]Project project)
         {
             return Service.Remove(project);
