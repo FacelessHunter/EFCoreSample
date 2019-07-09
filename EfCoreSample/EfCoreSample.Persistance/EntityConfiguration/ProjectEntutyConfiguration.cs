@@ -1,4 +1,5 @@
 ﻿using EfCoreSample.Doman;
+using EfCoreSample.Doman.Enum;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

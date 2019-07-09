@@ -20,40 +20,66 @@ namespace EfCoreSample.Infrastructure
         }
 
         public async Task<Project> FindAsync(long key)
-        {
-            
+        {            
             return await db.Projects.FirstOrDefaultAsync(p => p.Id == key);
         }
 
         public async Task<IEnumerable<Project>> GetAsync(Expression<Func<Project, bool>> expression)
         {
-
-            return null; //await db.Projects.<IEnumerable<Project>>(expression);
+            return await db.Projects.Where(expression).ToListAsync();
         }
 
-        public Task<Project> InsertAsync(Project item)
+        public async Task<IEnumerable<Project>> GetAllAsync()
         {
-            return null;
+            return await db.Projects.ToListAsync();
         }
-        public Task<bool> IsExistAsync(long key)
+
+        public async Task<Project> InsertAsync(Project item)
         {
-            return null;
+            db.Projects.Add(item);
+            await db.SaveChangesAsync();
+            return await db.Projects.FindAsync(item.Id);
         }
-        public void UpdateRange(IEnumerable<Project> items)
+
+        public async Task<bool> IsExistAsync(long key)
         {
-            
+            return await db.Projects.AnyAsync(p => p.Id == key);
+        }
+        public async void UpdateRange(IEnumerable<Project> items)
+        {
+            db.Projects.UpdateRange(items);
+            await db.SaveChangesAsync();
         }
         public Project Update(Project item)
         {
-            return null;
+            db.Projects.Update(item);
+            db.SaveChanges();
+            return db.Projects.Find(item.Id);
         }
         public bool Remove(Project item)
         {
-            return false;
+            try
+            {
+                db.Projects.Remove(item);
+                db.SaveChanges();
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
         }
         public bool Remove(long key)
         {
+            Project project = db.Projects.FirstOrDefault(p => p.Id == key);
+            if (project != null)
+            {
+                db.Projects.Remove(project);
+                db.SaveChanges();
+                return true;
+            }
             return false;
+
         }
 
 

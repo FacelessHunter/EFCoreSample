@@ -10,6 +10,7 @@ namespace EfCoreSample.Infrastructure.Abstraction
     {
         Task<TEntity> FindAsync(TKey key);
         Task<IEnumerable<TEntity>> GetAsync(Expression<Func<TEntity, bool>> expression);
+        Task<IEnumerable<TEntity>> GetAllAsync();
         Task<TEntity> InsertAsync(TEntity item);
         Task<bool> IsExistAsync(TKey key);
         void UpdateRange(IEnumerable<TEntity> items);

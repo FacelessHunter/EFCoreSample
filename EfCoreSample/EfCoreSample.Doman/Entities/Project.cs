@@ -1,4 +1,5 @@
 ﻿using EfCoreSample.Doman.Abstraction;
+using EfCoreSample.Doman.Enum;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,13 +18,5 @@ namespace EfCoreSample.Doman
 
         public ICollection<EmployeeProject> EmployeeProjects { get; set; }
 
-    }
-
-    public enum Status
-    {
-        Pending = 0,
-        InProgress = 1,
-        Completed = 2,
-        Cancelled = 3
     }
 }
