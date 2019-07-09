@@ -32,8 +32,8 @@ namespace EfCoreSample
                 opt.Filters.Add(typeof(ValidatorActionFilter));
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<Startup>());
 
-            services.AddTransient<IService, ProjectService>();
-            services.AddTransient<ProjectRepository>();
+            services.AddTransient<IProjectService, ProjectService>();
+            services.AddTransient<IRepository<Project,long>,ProjectRepository>();
 
             services.AddDbContext<EfCoreSampleDbContext>(options => options.UseMySql(Configuration.GetConnectionString("LocalConnection")));
         }

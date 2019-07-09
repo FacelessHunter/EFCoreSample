@@ -8,6 +8,7 @@ namespace EfCoreSample.Infrastructure.Abstraction
 {
     public interface IRepository<TEntity, TKey> where TEntity : class, IEntity<TKey>
     {
+        TEntity Find(long key);
         Task<TEntity> FindAsync(TKey key);
         Task<IEnumerable<TEntity>> GetAsync(Expression<Func<TEntity, bool>> expression);
         Task<IEnumerable<TEntity>> GetAllAsync();
