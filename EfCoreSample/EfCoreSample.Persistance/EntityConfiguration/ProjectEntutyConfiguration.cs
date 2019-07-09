@@ -35,7 +35,7 @@ namespace EfCoreSample.Persistance.EntityConfiguration
                     Id = 2,
                     Title = "DWP",
                     Status = Status.InProgress
-                });
+                }); ; 
 
         }
     }

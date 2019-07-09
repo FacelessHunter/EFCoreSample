@@ -9,6 +9,8 @@ using EfCoreSample.Services;
 using EfCoreSample.Infrastructure.Abstraction;
 using EfCoreSample.Infrastructure;
 using EfCoreSample.Doman;
+using FluentValidation.AspNetCore;
+using EfCoreSample.Filters;
 
 namespace EfCoreSample
 {
@@ -24,7 +26,12 @@ namespace EfCoreSample
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddMvc(opt =>
+            {
+                opt.Filters.Add(typeof(ValidatorActionFilter));
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<Startup>());
+
             services.AddTransient<IService, ProjectService>();
             services.AddTransient<ProjectRepository>();
 

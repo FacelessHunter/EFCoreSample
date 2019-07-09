@@ -14,9 +14,15 @@ namespace EfCoreSample.Infrastructure
     public class ProjectRepository : IRepository<Project, long>
     {
         private EfCoreSampleDbContext db { get; set;}
+
         public ProjectRepository(EfCoreSampleDbContext context)
         {
             db = context;
+        }
+
+        public  Project Find(long key)
+        {
+            return db.Projects.FirstOrDefault(p => p.Id == key);
         }
 
         public async Task<Project> FindAsync(long key)
@@ -33,6 +39,36 @@ namespace EfCoreSample.Infrastructure
         {
             return await db.Projects.ToListAsync();
         }
+
+       /* public async Task<IEnumerable<Employee>> GetMembersAsync(long key)
+        {
+           /* List<Employee> employees = new List<Employee>();
+            var project = await db.Projects
+                .Where(p => p.Id == key)
+                .Include(p => p.EmployeeProjects)
+                .ThenInclude(e => e.Employee)
+                .FirstOrDefaultAsync();
+                
+            var employeeProjects = project.EmployeeProjects.Where(p => p.ProjectId == key).ToList();
+
+            foreach (var x in employeeProjects)
+                employees.Add(x.Employee);
+            //employees[1].EmployeeProjects
+            //var empl = employees.
+
+            /*var project = db.Projects
+                .Single(p => p.Id == key);
+            //var temp = project.EmployeeProjects.Single();
+
+            db.Entry(project)
+                .Collection(p => p.EmployeeProjects)
+                .Query()
+                .Load();
+            var sad = project.EmployeeProjects;
+            sad.
+           // return await employees
+            //return employees;
+        }*/
 
         public async Task<Project> InsertAsync(Project item)
         {
