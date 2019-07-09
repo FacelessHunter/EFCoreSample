@@ -12,10 +12,10 @@ namespace EfCoreSample.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DefaultController : ControllerBase
+    public class ProjectController : ControllerBase
     {
         private IService Service { get; set; }
-        public DefaultController(IService service)
+        public ProjectController(IService service)
         {
             Service = service;
         }
