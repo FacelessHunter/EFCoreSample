@@ -328,3 +328,8 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+EfCoreSample/EfCoreSample.Persistance/Migrations/EfCoreSampleDbContextModelSnapshot.cs
+EfCoreSample/EfCoreSample.Persistance/Migrations/20190708061335_qwerty45.Designer.cs
+EfCoreSample/EfCoreSample.Persistance/Migrations/20190708061120_qwerty.cs
+EfCoreSample/EfCoreSample.Persistance/Migrations/20190708061120_qwerty.Designer.cs
+EfCoreSample/EfCoreSample.Persistance/Migrations/20190708061335_qwerty45.cs
