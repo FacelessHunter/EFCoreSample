@@ -12,6 +12,7 @@ namespace EfCoreSample.Infrastructure.Abstraction
         Task<TEntity> FindAsync(TKey key);
         Task<IEnumerable<TEntity>> GetAsync(Expression<Func<TEntity, bool>> expression);
         Task<IEnumerable<TEntity>> GetAllAsync();
+       // IEnumerable<TEntity> GetEmployees(long key);
         Task<TEntity> InsertAsync(TEntity item);
         bool IsExist(TKey key);
         Task<bool> IsExistAsync(TKey key);
