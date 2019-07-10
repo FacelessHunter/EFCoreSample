@@ -10,7 +10,7 @@ using EfCoreSample.Infrastructure.Abstraction;
 
 namespace EfCoreSample.Services
 {
-    class ProjectService : IProjectService
+    public class ProjectService : IProjectService
     {
         IProjectRepository<Project, long> projectRepository { get; set; }
         public ProjectService(IProjectRepository<Project, long> projectRepository)

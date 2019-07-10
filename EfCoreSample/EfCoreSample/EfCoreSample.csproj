@@ -27,6 +27,7 @@
     <ProjectReference Include="..\EfCoreSample.Doman\EfCoreSample.Doman.csproj" />
     <ProjectReference Include="..\EfCoreSample.Infrastructure\EfCoreSample.Infrastructure.csproj" />
     <ProjectReference Include="..\EfCoreSample.Persistance\EfCoreSample.Persistance.csproj" />
+    <ProjectReference Include="..\EfCoreSample.Services\EfCoreSample.Services.csproj" />
   </ItemGroup>
 
 </Project>
