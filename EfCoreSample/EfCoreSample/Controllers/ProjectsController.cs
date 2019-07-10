@@ -86,6 +86,30 @@ namespace EfCoreSample.Controllers
             else return Ok(project);
         }
 
+
+        /// <summary>
+        /// GET list of Projects by Employees 
+        /// </summary>
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     GET /Projects/[key]/Employee
+        ///     
+        ///     [key] = EmployeeId;
+        ///     
+        /// </remarks>
+        /// <param name="key"></param>
+        /// <returns>list of Projects</returns>
+        /// <response code="200"> if secssesfull return list of Projects</response>
+        /// <response code="404">If the items is null</response> 
+        [HttpGet("{key}/Employee")]
+        public async Task<ActionResult<IEnumerable<Project>>> GetProject(long key)
+        {
+            var projects = await Service.GetProjects(key);
+            if(projects == null)
+                return NotFound("Not Found projects");
+            return Ok(projects);
+        }
         /// <summary>
         /// Creates a Project.
         /// </summary>

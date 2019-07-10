@@ -40,6 +40,14 @@ namespace EfCoreSample.Infrastructure
             return await db.Projects.ToListAsync();
         }
 
+        public async Task<IEnumerable<Project>> GetProjects(long key)
+        {
+
+            return await db.Projects.FromSql("Select * from project, employeeproject " +
+                                              "Where project.Id = employeeproject.ProjectId " +
+                                              "and employeeproject.EmployeeId = {0}", key).ToListAsync<Project>();
+        }
+
         public async Task<Project> InsertAsync(Project item)
         {
             db.Projects.Add(item);

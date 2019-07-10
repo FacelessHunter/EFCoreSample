@@ -11,6 +11,7 @@ namespace EfCoreSample.Services
     {
         Task<IEnumerable<Project>> Get(Status? status, string title, DateTime? startTime, DateTime? endTime, int page, int pageSize, SortState sortOrder);
         Task<Project> Get(long id);
+        Task<IEnumerable<Project>> GetProjects(long key);
         Task<Project> Create(Project item);
         Project Update(Project item);
         bool Remove(Project item);

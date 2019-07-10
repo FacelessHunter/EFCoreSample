@@ -81,6 +81,11 @@ namespace EfCoreSample.Services
             return null;
         }
 
+        public async Task<IEnumerable<Project>> GetProjects(long key)
+        {
+            return await projectRepository.GetProjects(key);
+        }
+
         public async Task<Project> Create(Project item)
         {
             if (!projectRepository.IsExist(item.Id))
