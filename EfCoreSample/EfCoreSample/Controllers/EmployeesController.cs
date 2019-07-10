@@ -28,6 +28,14 @@ namespace EfCoreSample.Controllers
             return Ok(await Service.Get());
         }
 
+        [HttpGet("{key}/Project")]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees(long key)
+        {
+            return Ok(await Service.GetEmployees(key));
+        }
+
         [HttpGet("{key}")]
         public async Task<ActionResult<Employee>> Get(long key)
         {

@@ -10,6 +10,7 @@ namespace EfCoreSample.Services
     {
         Task<IEnumerable<Employee>> Get();
         Task<Employee> Get(long id);
+        Task<IEnumerable<Employee>> GetEmployees(long key);
         Task<Employee> Create(Employee item);
         Employee Update(Employee item);
         bool Remove(Employee item);

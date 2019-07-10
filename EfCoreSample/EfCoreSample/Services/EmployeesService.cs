@@ -20,6 +20,11 @@ namespace EfCoreSample.Services
             return await employeesRepository.GetAllAsync();
         }
 
+        public async Task<IEnumerable<Employee>> GetEmployees(long key)
+        {
+            return await employeesRepository.GetEmployees(key);
+        }
+
         public async Task<Employee> Get(long key)
         {
             var project = await employeesRepository.FindAsync(key);
