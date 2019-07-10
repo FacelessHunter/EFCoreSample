@@ -36,6 +36,30 @@ namespace EfCoreSample.Persistance.EntityConfiguration
                     Id = 2,
                     FirstName = "Olga",
                     LastName = "Petrenko"                    
+                },
+                new Employee()
+                {
+                    Id = 3,
+                    FirstName = "Vity",
+                    LastName = "Zhad"
+                },
+                new Employee()
+                {
+                    Id = 4,
+                    FirstName = "Mykhailo",
+                    LastName = "La Patrik (-_-)"
+                },
+                new Employee()
+                {
+                    Id = 5,
+                    FirstName = "Grud",
+                    LastName = "Update"
+                },
+                new Employee()
+                {
+                    Id = 6,
+                    FirstName = "False",
+                    LastName = "True"
                 });
         }
     }

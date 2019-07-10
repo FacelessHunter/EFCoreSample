@@ -33,8 +33,24 @@ namespace EfCoreSample.Persistance.EntityConfiguration
                 new Project()
                 {
                     Id = 2,
-                    Title = "DWP",
+                    Title = "WWW",
+                    Status = Status.Pending
+                },
+                new Project()
+                {
+                    Id = 3,
+                    Title = "FairyTail",
                     Status = Status.InProgress
+                }, new Project()
+                {
+                    Id = 4,
+                    Title = "Windows lite",
+                    Status = Status.InProgress
+                }, new Project()
+                {
+                    Id = 5,
+                    Title = "GTA4",
+                    Status = Status.Completed
                 }); ; 
 
         }
