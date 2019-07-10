@@ -12,8 +12,8 @@ namespace EfCoreSample.Services
 {
     class ProjectService : IProjectService
     {
-        IRepository<Project, long> projectRepository { get; set; }
-        public ProjectService(IRepository<Project, long> projectRepository)
+        IProjectRepository<Project, long> projectRepository { get; set; }
+        public ProjectService(IProjectRepository<Project, long> projectRepository)
         {
             this.projectRepository = projectRepository;
         }

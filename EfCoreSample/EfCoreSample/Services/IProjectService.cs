@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EfCoreSample.Services
 {
-    public interface IProjectService
+    public interface IProjectService : IBaseService
     {
         Task<IEnumerable<Project>> Get(Status? status, string title, DateTime? startTime, DateTime? endTime, int page, int pageSize, SortState sortOrder);
         Task<Project> Get(long id);
