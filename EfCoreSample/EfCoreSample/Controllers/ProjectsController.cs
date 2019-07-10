@@ -25,7 +25,7 @@ namespace EfCoreSample.Controllers
 
 
         /// <summary>
-        /// GET paginated list of searching projects according to the filer, sorted by 
+        /// GET paginated list of searching projects according to the filtred, sorted by 
         ///StartTimeAsc=1,
         ///StartTimeDesc=2,
         ///EndTimeAsc=3,

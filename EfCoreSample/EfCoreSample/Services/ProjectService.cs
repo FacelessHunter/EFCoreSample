@@ -17,20 +17,22 @@ namespace EfCoreSample.Services
         {
             this.projectRepository = projectRepository;
         }
-
+        //This method return paginated list of searching projects according to the filtred and sorted
         public async Task<IEnumerable<Project>> Get(Status? status, string title, DateTime? startTime, DateTime? endTime, int page, int pageSize, SortState sortOrder)
         {
             
             IEnumerable<Project> projects = await projectRepository.GetAllAsync();
-
-            if(startTime != null && endTime != null)
+            //Filter by starttime and endtime
+            if (startTime != null && endTime != null)
             {
                 projects = await projectRepository.GetAsync(p => p.StartTime >= startTime && p.EndTime <= endTime);
             }
+            //Filter by title 
             if (!String.IsNullOrEmpty(title))
             {
                 projects = await projectRepository.GetAsync(p => p.Title.Contains(title));
             }
+            //Filter by status
             if (status != null)
             {
                 if (status == Status.Pending)
@@ -42,6 +44,7 @@ namespace EfCoreSample.Services
                 else
                     projects = await projectRepository.GetAsync(p => p.Status == Status.Cancelled);
             }
+            
             switch (sortOrder)
             {
                 case SortState.LastUpdateTimeDesc:
@@ -69,7 +72,7 @@ namespace EfCoreSample.Services
                     projects = projects.OrderBy(p => p.LastUpdatedTime);
                     break;
             }
-       
+            //Paginate...
             return projects.Skip((page - 1) * pageSize).Take(pageSize).ToList<Project>();
         }
 
