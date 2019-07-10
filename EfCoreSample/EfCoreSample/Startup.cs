@@ -15,6 +15,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Reflection;
 using System.IO;
+using EfCoreSample.Infrastructure.Repository;
 
 namespace EfCoreSample
 {
@@ -63,7 +64,10 @@ namespace EfCoreSample
 
 
             services.AddTransient<IProjectService, ProjectService>();
-            services.AddTransient<IRepository<Project,long>,ProjectRepository>();
+            services.AddTransient<IProjectRepository<Project,long>,ProjectRepository>();
+
+            services.AddTransient<IEmployeesService, EmployeesService>();
+            services.AddTransient<IEmployeesRepository<Employee, long>, EmployeesRepository>();
 
             services.AddDbContext<EfCoreSampleDbContext>(options => options.UseMySql(Configuration.GetConnectionString("LocalConnection")));
         }
