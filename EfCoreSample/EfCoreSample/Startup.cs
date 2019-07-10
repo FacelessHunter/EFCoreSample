@@ -13,8 +13,8 @@ using FluentValidation.AspNetCore;
 using EfCoreSample.Filters;
 using Microsoft.OpenApi.Models;
 using System;
-
-
+using System.Reflection;
+using System.IO;
 
 namespace EfCoreSample
 {
@@ -56,6 +56,9 @@ namespace EfCoreSample
 
                     }
                 });
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
 
 
