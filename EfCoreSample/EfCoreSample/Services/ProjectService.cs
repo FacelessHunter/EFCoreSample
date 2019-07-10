@@ -75,12 +75,17 @@ namespace EfCoreSample.Services
 
         public async Task<Project> Get(long key)
         {
-            return await projectRepository.FindAsync(key);
+            var project = await projectRepository.FindAsync(key);
+            if(project !=null)
+                return await projectRepository.FindAsync(key);
+            return null;
         }
 
         public async Task<Project> Create(Project item)
         {
-            return await projectRepository.InsertAsync(item);
+            if (!projectRepository.IsExist(item.Id))
+                return await projectRepository.InsertAsync(item);
+            return null;
         }
 
         public Project Update(Project item)
@@ -93,6 +98,7 @@ namespace EfCoreSample.Services
 
         public bool Remove(Project item)
         {
+            
             if (!projectRepository.IsExist(item.Id))
             { 
                 if (item.Status != Status.InProgress)

@@ -90,7 +90,7 @@ namespace EfCoreSample.Infrastructure
 
         public Project Update(Project item)
         {
-            db.Entry(item).State = EntityState.Modified;
+            db.Projects.Update(item);
             db.SaveChanges();
 
             return db.Projects.Find(item.Id);

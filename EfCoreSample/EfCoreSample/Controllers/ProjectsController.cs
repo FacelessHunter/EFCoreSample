@@ -23,8 +23,7 @@ namespace EfCoreSample.Controllers
         }
         
         [HttpGet]
-        public async Task<IEnumerable<Project>> Get(
-                                                    Status? status, 
+        public async Task<ActionResult<IEnumerable<Project>>> Get(Status? status, 
                                                     string title, 
                                                     DateTime? startTime, 
                                                     DateTime? endTime, 
@@ -32,37 +31,51 @@ namespace EfCoreSample.Controllers
                                                     int pageSize = 3,
                                                     SortState sortOrder = SortState.LastUpdateTimeAsc)
         {
-            return await Service.Get(status, title, startTime, endTime, page, pageSize, sortOrder);
+            return Ok(await Service.Get(status, title, startTime, endTime, page, pageSize, sortOrder));
         }
 
         
         [HttpGet("{key}")]
-        public async Task<Project> Get(long key)
+        public async Task<ActionResult<Project>> Get(long key)
         {
-            return await Service.Get(key);
+            Project project = await Service.Get(key);
+
+            if (project == null)
+                return NotFound("Not Found project");
+            else return Ok(project);
         }
         
         [HttpPost]
-        public async Task<Project> Create([FromBody]Project project)
+        public async Task<ActionResult<Project>> Create([FromBody]Project project)
         {
-            return await Service.Create(project);
+            project = await Service.Create(project);
+            if (project == null)
+                return BadRequest("Maybe this project is exist");
+            else return Ok(project);
         }
 
         [HttpPut]
-        public Project Update(Project project)
+        public ActionResult<Project> Update(Project project)
         {
-            return  Service.Update(project);
+            project = Service.Update(project);
+            if (project == null)
+                return NotFound("Not Found project for update");
+            return Ok(project);
         }
         [HttpDelete]
-        public bool Delete([FromBody]Project project)
+        public ActionResult<bool> Delete(Project project)
         {
-            return Service.Remove(project);
+            if (Service.Remove(project) == true)
+                return Ok(true);
+            else return NotFound("Not Found project for delete");
         }
 
         [HttpDelete("{key}")]
-        public bool Delete(long key)
+        public ActionResult<bool> Delete(long key)
         {
-            return Service.Remove(key);
+            if (Service.Remove(key) == true)
+                return Ok(true);
+            else return NotFound("Not Found project for delete");
         }
         
     }
